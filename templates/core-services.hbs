@@ -1,0 +1,8 @@
+<div class="rh-service-catalog-core-service" data-row-height-id="core-service" data-field-key="core-service">
+    <strong class="rh-service-catalog-label">Core Services:</strong><br>
+    {{#each this}}
+        <wa-tag variant="{{variant}}" size="small" data-filter-name="core-service" data-filter-key="{{label}}">
+            {{label}}
+        </wa-tag>
+    {{/each}}
+</div>

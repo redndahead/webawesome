@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/styles/webawesome.css" />
+    <script type="module" src="https://early.webawesome.com/webawesome@3.0.0-beta.4/dist/webawesome.loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+</head>
+<body style="margin:20px">
+    <div class="wa-stack">
+        <div>
+            <wa-callout variant="warning">
+                <wa-icon slot="icon" name="triangle-exclamation" variant="regular"></wa-icon>
+                <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+                This is a standard callout. You can customize its content and even the icon.
+            </wa-callout>
+        </div>
+        <div>
+            <wa-tab-group>
+                <wa-tab panel="general">General</wa-tab>
+                <wa-tab panel="custom">Custom</wa-tab>
+                <wa-tab panel="advanced">Advanced</wa-tab>
+                <wa-tab panel="disabled">Disabled</wa-tab>
+
+                <wa-tab-panel name="general">This is the general tab panel.</wa-tab-panel>
+                <wa-tab-panel name="custom">This is the custom tab panel.</wa-tab-panel>
+                <wa-tab-panel name="advanced">This is the advanced tab panel.</wa-tab-panel>
+                <wa-tab-panel name="disabled">This is a disabled tab panel.</wa-tab-panel>
+            </wa-tab-group>
+        </div>
+        <div>
+            <wa-slider
+                    class="slider"
+                    label="Number of users"
+                    hint="Limit six per team"
+                    name="value"
+                    value="3"
+                    min="0"
+                    max="6"
+                    with-markers
+                    with-tooltip
+            >
+                <span slot="reference">Less</span>
+                <span slot="reference">More</span>
+            </wa-slider>
+        </div>
+        <div class="wa-cluster">
+            <wa-input label="Search" placeholder="Search services" size="medium" pill></wa-input>
+            <wa-select label="Select a Few" with-clear>
+                <wa-option value="option-1">Option 1</wa-option>
+                <wa-option value="option-2">Option 2</wa-option>
+                <wa-option value="option-3">Option 3</wa-option>
+                <wa-option value="option-4">Option 4</wa-option>
+                <wa-option value="option-5">Option 5</wa-option>
+                <wa-option value="option-6">Option 6</wa-option>
+            </wa-select>
+            <wa-select label="Select a Few" with-clear>
+                <wa-option value="option-1">Option 1</wa-option>
+                <wa-option value="option-2">Option 2</wa-option>
+                <wa-option value="option-3">Option 3</wa-option>
+                <wa-option value="option-4">Option 4</wa-option>
+                <wa-option value="option-5">Option 5</wa-option>
+                <wa-option value="option-6">Option 6</wa-option>
+            </wa-select>
+        </div>
+        <div>
+            <div id="service-grid" class="wa-grid" style="--min-column-size: 300px;">
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

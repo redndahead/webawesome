@@ -1,0 +1,8 @@
+<div class="rh-service-catalog-clients" data-row-height-id="clients" data-field-key="clients">
+    <strong class="rh-service-catalog-label">Clients:</strong><br>
+    {{#each this}}
+        <wa-tag variant="{{variant}}" size="small" data-filter-name="clients" data-filter-key="{{label}}">
+            {{label}}
+        </wa-tag>
+    {{/each}}
+</div>
