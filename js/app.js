@@ -1,3 +1,5 @@
+const API_URL = 'https://gsbrh-airtable-cache.s3.us-west-2.amazonaws.com/airtable-proxy-cache-tblIzMTLp50boukbM-viw78XPKAhmf8Jb4C.json';
+
 // Load template files
 async function loadTemplate(url) {
   const res = await fetch(url);
