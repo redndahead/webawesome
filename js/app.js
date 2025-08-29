@@ -1,36 +1,31 @@
-const services = [
-  {
-    title: 'Grant Support',
-    description: 'GSB faculty seeking grant funding...',
-    coreServices: [
-      { label: 'Grant Support', variant: 'brand' },
-      { label: 'Funding Strategy', variant: 'info' }
-    ],
-    clients: [
-      { label: 'GSB Faculty', variant: 'success' },
-      { label: 'PhD Students', variant: 'warning' }
-    ],
-    requestLink: 'https://gsbresearchhub.stanford.edu/services/general-support-request-form'
-  },
-  {
-    title: 'Research Assistance',
-    description: 'Provides research support services...',
-    coreServices: [
-      { label: 'Data Analysis', variant: 'primary' },
-      { label: 'Literature Review', variant: 'secondary' }
-    ],
-    clients: [
-      { label: 'Faculty', variant: 'success' },
-      { label: 'Postdocs', variant: 'info' }
-    ],
-    requestLink: 'https://gsbresearchhub.stanford.edu/services/research-assistance'
-  }
-];
-
 // Load template files
 async function loadTemplate(url) {
   const res = await fetch(url);
   return await res.text();
+}
+
+async function fetchServices() {
+  const res = await fetch(API_URL);
+  const data = await res.json();
+
+  // Transform Airtable format into something usable for our template
+  return data.records.map(record => {
+    const fields = record.fields;
+
+    return {
+      title: fields['Service Name'] || '',
+      description: fields['Service Description'] || '',
+      coreServices: (fields['Core Service'] || []).map(label => ({
+        label,
+        variant: 'brand'
+      })),
+      clients: (fields['Clients'] || []).map(label => ({
+        label,
+        variant: 'success'
+      })),
+      requestLink: fields['Request Services'] || '#'
+    };
+  });
 }
 
 (async () => {
@@ -47,6 +42,9 @@ async function loadTemplate(url) {
 
   // Compile main template
   const template = Handlebars.compile(serviceCardTemplate);
+
+  // Fetch services
+  const services = await fetchServices();
 
   // Render all services
   const grid = document.getElementById('service-grid');
