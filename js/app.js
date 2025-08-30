@@ -54,12 +54,9 @@ async function fetchServices() {
     grid.insertAdjacentHTML('beforeend', template(service));
   });
 
-})();
-
-jQuery(function($){
   await allDefined();
   equalRowHeight();
-});
+})();
 
 function equalRowHeight() {
   // Remove all set row classes
