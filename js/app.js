@@ -9,9 +9,10 @@ async function loadTemplate(url) {
 async function fetchServices() {
   const res = await fetch(API_URL);
   const data = await res.json();
+  console.log(data);
 
   // Transform Airtable format into something usable for our template
-  return data.records.map(record => {
+  return data.data.records.map(record => {
     const fields = record.fields;
 
     return {
