@@ -53,4 +53,50 @@ async function fetchServices() {
   services.forEach(service => {
     grid.insertAdjacentHTML('beforeend', template(service));
   });
+
+  equalRowHeight();
 })();
+
+function equalRowHeight() {
+  // Remove all set row classes
+  $(".grid-item").removeClass (function (index, className) {
+    return (className.match (/(^|\s)airtable-list-height-row-\S+/g) || []).join(' ');
+  });
+
+  // Reset the height to auto.
+  $('.airtable-list-record-row [data-row-height-id]').height("auto");
+
+  var rowNum = 0;
+  var previousTop = 0;
+  var fields = {};
+  $('.grid-item:visible').each(function() {
+    $this = $(this);
+    let nextTop = $this.offset().top;
+    if (nextTop !== previousTop) {
+      rowNum++;
+      previousTop = nextTop;
+      fields[rowNum] = {};
+    }
+
+    // Loop through each field that needs to be equal in height and collect the necessary heights.
+    $this.find("[data-row-height-id]").each(function() {
+      $field = $(this);
+      var fieldId = $field.data('row-height-id');
+      var height = $field.height();
+
+      if (!fields[rowNum].hasOwnProperty(fieldId) || (fields[rowNum].hasOwnProperty(fieldId) && fields[rowNum][fieldId] < height)) {
+        fields[rowNum][fieldId] = height;
+      }
+    });
+
+    $this.addClass('airtable-list-height-row-' + rowNum);
+  });
+
+  // Set the height of each element.
+  for (rowIndex in fields) {
+    var fieldHeights = fields[rowIndex];
+    for (key in fieldHeights) {
+      $('.airtable-list-height-row-' + rowIndex + ' [data-row-height-id="' + key + '"]').height(fieldHeights[key]);
+    }
+  }
+}
