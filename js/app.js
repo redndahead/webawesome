@@ -56,7 +56,10 @@ async function fetchServices() {
 
 })();
 
-equalRowHeight();
+jQuery(function($){
+  equalRowHeight();
+});
+
 function equalRowHeight() {
   // Remove all set row classes
   $(".grid-item").removeClass (function (index, className) {
