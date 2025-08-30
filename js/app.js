@@ -57,6 +57,7 @@ async function fetchServices() {
 })();
 
 jQuery(function($){
+  await allDefined();
   equalRowHeight();
 });
 
