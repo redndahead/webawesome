@@ -54,9 +54,9 @@ async function fetchServices() {
     grid.insertAdjacentHTML('beforeend', template(service));
   });
 
-  equalRowHeight();
 })();
 
+equalRowHeight();
 function equalRowHeight() {
   // Remove all set row classes
   $(".grid-item").removeClass (function (index, className) {
