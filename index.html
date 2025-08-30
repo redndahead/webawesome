@@ -10,42 +10,6 @@
 </head>
 <body style="margin:20px">
     <div class="wa-stack">
-        <div>
-            <wa-callout variant="warning">
-                <wa-icon slot="icon" name="triangle-exclamation" variant="regular"></wa-icon>
-                <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
-                This is a standard callout. You can customize its content and even the icon.
-            </wa-callout>
-        </div>
-        <div>
-            <wa-tab-group>
-                <wa-tab panel="general">General</wa-tab>
-                <wa-tab panel="custom">Custom</wa-tab>
-                <wa-tab panel="advanced">Advanced</wa-tab>
-                <wa-tab panel="disabled">Disabled</wa-tab>
-
-                <wa-tab-panel name="general">This is the general tab panel.</wa-tab-panel>
-                <wa-tab-panel name="custom">This is the custom tab panel.</wa-tab-panel>
-                <wa-tab-panel name="advanced">This is the advanced tab panel.</wa-tab-panel>
-                <wa-tab-panel name="disabled">This is a disabled tab panel.</wa-tab-panel>
-            </wa-tab-group>
-        </div>
-        <div>
-            <wa-slider
-                    class="slider"
-                    label="Number of users"
-                    hint="Limit six per team"
-                    name="value"
-                    value="3"
-                    min="0"
-                    max="6"
-                    with-markers
-                    with-tooltip
-            >
-                <span slot="reference">Less</span>
-                <span slot="reference">More</span>
-            </wa-slider>
-        </div>
         <div class="wa-cluster">
             <wa-input label="Search" placeholder="Search services" size="medium" pill></wa-input>
             <wa-select label="Select a Few" with-clear>
